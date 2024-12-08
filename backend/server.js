@@ -4,7 +4,13 @@ const { LIT_NETWORK } = require("@lit-protocol/constants");
 const LitJsSdk = require("@lit-protocol/lit-node-client-nodejs");
 const authRouter = require("./routes/auth");
 const dotenv = require("dotenv");
+const cron = require("node-cron");
+const db = require("./configs/db");
+const { analyseData } = require("./agents/analyse");
+const { getMarketData } = require("./agents/fetchData");
 dotenv.config();
+db();
+
 const cors = require("cors");
 
 const app = express();
@@ -26,6 +32,13 @@ app.listen(port, async () => {
 });
 
 const constructor = async () => {
+  await getMarketData();
+  console.log(await analyseData());
+  cron.schedule("*/5 * * * *", async () => {
+    console.log("Running a task every 5 minutes");
+    await getMarketData();
+    console.log(await analyseData());
+  });
   app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
     alertWhenUnauthorized: false,
     litNetwork: LIT_NETWORK.Datil,
@@ -42,4 +55,5 @@ const constructor = async () => {
   const accounts = await wallet.getDefaultAddress();
 
   console.log(accounts);
+  // await getMarketData();
 };

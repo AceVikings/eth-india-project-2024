@@ -3,9 +3,11 @@ import { useUserData } from "../../contexts/userDataContext";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { useAccount } from "@starknet-react/core";
 
 const index = () => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const { address } = useAccount();
   const userData = useUserData();
   useEffect(() => {
     console.log(userData.userData);
@@ -32,13 +34,26 @@ const index = () => {
     setIsSidePanelOpen(false);
   };
   return (
-    <nav className="flex justify-between items-center fixed top-0 left-0 w-screen px-6 py-4 bg-black/20">
+    <nav className="flex items-center fixed top-0 left-0 w-screen px-6 py-4 bg-black/20">
       <Link
         to={"/"}
         className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
       >
         Web3Games
       </Link>
+
+      <Link
+        to={"/games"}
+        className="px-6 py-2 mr-4 ml-auto rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 text-gray-900 font-semibold hover:scale-105 transition-transform"
+      >
+        Play
+      </Link>
+      {address && (
+        <p className="mr-4 ml-4 text-white">
+          {address.slice(0, 6) + "..." + address.slice(-4)}
+        </p>
+      )}
+
       {!userData?.userData.idToken && (
         <Link
           to={"/auth"}

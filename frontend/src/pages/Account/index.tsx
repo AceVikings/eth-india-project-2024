@@ -145,7 +145,7 @@ const Account = () => {
             Friends List
           </h3>
           <div className="space-y-4">
-            {friends.map((friend) => (
+            {friends.map((friend: any) => (
               <div
                 key={friend.id}
                 className="bg-gray-800 p-4 rounded-lg flex items-center"

@@ -31,13 +31,13 @@ const GameLobby = () => {
       contract && friendAddress
         ? [contract.populate("create_game", [friendAddress])]
         : undefined,
-    onSuccess(data, variables, context) {
+    onSuccess(data, _, _) {
       console.log(data);
       toast.success(
         "Game created successfully!" + " Tx Hash:" + data.transaction_hash
       );
     },
-    onError(error, variables, context) {
+    onError(error, _, _) {
       toast.error("Error creating game");
     },
   });
@@ -49,7 +49,7 @@ const GameLobby = () => {
     args: [address],
     enabled: !!address,
     // watch: true,
-    refetchInterval(query) {
+    refetchInterval() {
       return 2000;
     },
   });
@@ -61,7 +61,7 @@ const GameLobby = () => {
     args: [address],
     enabled: !!address && !!isPlayerInGame,
     watch: true,
-    refetchInterval(query) {
+    refetchInterval() {
       return 2000;
     },
   });
@@ -73,7 +73,7 @@ const GameLobby = () => {
     args: [playerGameId],
     enabled: address && !!playerGameId,
     watch: true,
-    refetchInterval(query) {
+    refetchInterval() {
       return 2000;
     },
   });
@@ -85,7 +85,7 @@ const GameLobby = () => {
     args: [playerGameId],
     enabled: address && !!playerGameId,
     watch: true,
-    refetchInterval(query) {
+    refetchInterval() {
       return 2000;
     },
   });

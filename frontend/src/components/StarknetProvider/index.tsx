@@ -25,7 +25,7 @@ export function StarknetProvider({ children }: { children: React.ReactNode }) {
     <StarknetConfig
       chains={[mainnet, sepolia]}
       provider={jsonRpcProvider({
-        rpc(chain) {
+        rpc() {
           return { nodeUrl: "https://starknet-sepolia.public.blastapi.io" };
         },
       })}

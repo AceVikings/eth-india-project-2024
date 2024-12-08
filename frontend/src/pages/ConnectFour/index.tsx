@@ -63,13 +63,13 @@ const Index = () => {
       contract && gameId && selectedCol.current !== null
         ? [contract.populate("make_move", [gameId, selectedCol.current])]
         : undefined,
-    onSuccess(data, variables, context) {
+    onSuccess(data, _, _) {
       console.log(data);
       toast.success(
         "Game created successfully!" + " Tx Hash:" + data.transaction_hash
       );
     },
-    onError(error, variables, context) {
+    onError(error, _, _) {
       toast.error("Error making the move game");
       console.log(error);
     },

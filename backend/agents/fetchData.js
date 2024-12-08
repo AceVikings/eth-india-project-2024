@@ -30,7 +30,9 @@ const getMarketData = async (req, res) => {
       }));
       // Moving Average
       const sma = calculateSMA(prices, 5);
+      // Relative Strength Index
       const rsi = calculateRSI(prices);
+      // Volume Weighted Average Price
       const vwap = calculateVWAP(prices, volumes);
 
       const marketData = new MarketData({

@@ -75,6 +75,25 @@ const Account = () => {
       return parseFloat(formatEther(balance)).toPrecision(4) + " POL";
     }
   };
+
+  const handleDepositUSDC = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_PUBLIC_BACKEND_URL}/user/depositUSDC`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userData.userData.idToken}`,
+        },
+        body: JSON.stringify({ amount: 100, address: wallets[0].address }),
+      }
+    );
+    if (response.ok) {
+      toast.success("USDC deposited successfully");
+    } else {
+      toast.error("Error depositing USDC");
+    }
+  };
   const handleCopy = (address: string) => {
     navigator.clipboard.writeText(address);
     toast.success("Address copied to clipboard");
@@ -110,6 +129,12 @@ const Account = () => {
                   </button>
                 </div>
                 <p className="text-white">Balance: {walletBalances[_index]}</p>
+                <button
+                  onClick={() => handleDepositUSDC()}
+                  className="bg-gradient-to-r from-emerald-400 w-1/3 mx-auto to-cyan-400 text-gray-900 font-semibold rounded-full py-1 hover:scale-105 transition-transform"
+                >
+                  Stake to be trusted player
+                </button>
               </div>
             ))}
           </div>

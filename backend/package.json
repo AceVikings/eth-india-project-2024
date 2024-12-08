@@ -1,10 +1,12 @@
 {
   "dependencies": {
+    "@coinbase/cdp-langchain": "^0.0.8",
     "@coinbase/coinbase-sdk": "^0.11.2",
     "@langchain/openai": "^0.3.14",
     "@lit-protocol/lit-node-client-nodejs": "^7.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "ethers": "^6.13.4",
     "express": "^4.21.2",
     "mongoose": "^8.8.4",
     "node-cron": "^3.0.3"

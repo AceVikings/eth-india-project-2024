@@ -210,7 +210,7 @@ const GameLobby = () => {
                 Player 1: {players.player1}
               </h3>
               <button
-                onClick={() => navigate("/connect-four")}
+                onClick={() => navigate(`/connect-four/${playerGameId}`)}
                 className="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 text-gray-900 font-semibold hover:scale-105 transition-transform"
               >
                 Accept

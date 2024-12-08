@@ -345,7 +345,14 @@ const Index = () => {
           </div>
         ))}
       </div>
-
+      <button
+        onClick={() => {
+          toast.success("Player reported successfully!");
+        }}
+        className="mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 text-gray-900 font-semibold hover:scale-105 transition-transform"
+      >
+        Report Player
+      </button>
       {/* Update reset button to match Home page style */}
       {/* <button
         onClick={resetGame}

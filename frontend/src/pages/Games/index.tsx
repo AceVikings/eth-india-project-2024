@@ -62,7 +62,7 @@ const index = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {allGames.map((game) => (
             <Link
-              to={`/${game.id}`}
+              to={`/games/${game.id}`}
               key={game.id}
               className="bg-white/10 rounded-xl overflow-hidden hover:-translate-y-2 transition-transform cursor-pointer"
             >

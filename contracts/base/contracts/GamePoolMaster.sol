@@ -110,4 +110,8 @@ contract GamePoolMaster is ERC20Burnable, Ownable2Step {
     function setBotAddress(address _botAddress) external onlyOwner {
         botAddress = _botAddress;
     }
+
+    function setUSDC(address _usdc) external onlyOwner {
+        USDC = IERC20(_usdc);
+    }
 }

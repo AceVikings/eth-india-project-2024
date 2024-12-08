@@ -30,6 +30,8 @@ const index = () => {
       userData.setUserData({ idToken: null });
     } else {
       toast.error("Error logging out");
+      localStorage.removeItem("idToken");
+      userData.setUserData({ idToken: null });
     }
     setIsSidePanelOpen(false);
   };

@@ -12,7 +12,7 @@ contract MockSwap {
 
     function swapUSDCForPolygon(uint256 usdcAmount) external {
         // Calculate the equivalent amount of Polygon tokens (1 USDC = 2 Polygon)
-        uint256 polygonAmount = usdcAmount * 2;
+        uint256 polygonAmount = usdcAmount * 2 * 1e12;
 
         // Check if the contract has enough Polygon tokens
         require(
@@ -32,7 +32,7 @@ contract MockSwap {
 
     function swapPolygonForUSDC(uint256 polygonAmount) external payable {
         // Calculate the equivalent amount of USDC tokens (1 Polygon = 0.5 USDC)
-        uint256 usdcAmount = polygonAmount / 2;
+        uint256 usdcAmount = polygonAmount / (2 * 1e12);
 
         // Check if the contract has enough USDC tokens
         require(
